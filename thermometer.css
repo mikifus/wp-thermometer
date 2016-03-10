@@ -1,23 +1,23 @@
-#thermometer {
+.wp-thermometer {
 	display: block;
 	width: 100%;
 }
 
-#thermometer ol {
+.wp-thermometer ol {
 	width: 100%;
 	margin: 0;
 	padding: 0;
 	text-align: center;
 }
 
-#thermometer li {
+.wp-thermometer li {
 	list-style-type: none;
 	float: left;
 	text-align: center;
 	font-size: .8em;
 }
 
-#thermometer li span {
+.wp-thermometer li span {
 	/* So if css is disabled there's no line break */
 	display: block;
 	height: 23px;
@@ -31,25 +31,25 @@
 	-moz-border-radius: -20px;
 }
 
-#thermometer li.completed span {
+.wp-thermometer li.completed span {
 	background: #c00;
 	background: -webkit-gradient(linear, 0 0, 0 100%, from(#c00), to(#900));
 	background: -moz-linear-gradient(top, #c00, #900);
 }
 
-#thermometer li:first-child span {
+.wp-thermometer li:first-child span {
 	border-left: 1px solid #111;
 	-webkit-border-radius: 20px 0 0 20px;
 	-moz-border-radius: 20px 0 0 20px;
 }
 
-#thermometer li:last-child span/*, #thermometer li.last span*/ {
+.wp-thermometer li:last-child span/*, .wp-thermometer li.last span*/ {
 	border-right: 1px solid #111;
 	-webkit-border-radius: 0 20px 20px 0;
 	-moz-border-radius: 0 20px 20px 0;
 }
 
 /* To display bold if css is disabled */
-#thermometer li strong {
+.wp-thermometer li strong {
 	font-weight: normal;
 }
