@@ -239,7 +239,7 @@ class Wp_Thermometer_Plugin {
         }
 
         $deadline = strtotime($_POST['deadline']);
-        if( empty($_POST['deadline']) || $deadline < time() ){
+        if( empty($_POST['deadline']) ){
             $this->validation_errors[] = "Deadline field is not valid";
             return false;
         }
@@ -301,7 +301,7 @@ class Wp_Thermometer_Plugin {
         $date1 = new DateTime( $thermometer_values['deadline'] );  //current date or any date
         $date2 = new DateTime();   //Future date
         $diff = $date2->diff($date1)->format("%a");  //find difference
-        $days = intval($diff);   //rounding days
+        $days = intval($diff) + 1;   //rounding days, the last one is taken too
 
         $percent = intval( empty($atts['percent']) ? ( $current * 100 / $goal ) : $atts['percent'] ); // TODO: Make $percent work as a parameter, I tried.
 		if ( $percent > 100) {
@@ -312,14 +312,17 @@ class Wp_Thermometer_Plugin {
         $output .=  '<h3>' . wpautop( wp_kses_post( $pull_quote_atts[ 'title' ] ) ) . '</h3>';
         $output .= '<p>' . wp_kses_post( $pull_quote_atts[ 'subtitle' ] ) . '</p>';
         $output .= '<p>' . wp_kses_post( $pull_quote_atts[ 'description' ] ) . '</p>';
-        $output .= '<p>' . wp_kses_post( $pull_quote_atts[ 'goal' ] ) . '</p>';
 
-        $daystring = sprintf(
-                __("%d days to reach the goal.", 'wp_thermometer'),
-                $days
-        );
-
-        $output .= '<p> ' . $daystring . ' </p>';
+        if( $days < 0 ) {
+            $daystring = __("Finished %d days ago.", 'wp_thermometer');
+        } else if( $days == 0 ) {
+            $daystring = __("Today is the last day!", 'wp_thermometer');
+        } else {
+            $daystring = sprintf(
+                    __("%d days to reach the goal.", 'wp_thermometer'),
+                    $days
+            );
+        }
 
         $output .= '<div class="meter">';
         $output .= '<span style="width: '.$percent.'%; "></span>';
@@ -327,18 +330,30 @@ class Wp_Thermometer_Plugin {
 
 		$width = 1;
 		$output .= "<ol>";
-		for ( $c = 0; $c < 100; ++$c ) {
+		for ( $c = 1; $c <= 100; ++$c ) {
 
             $id = $c;
 
-			$output .= "<li style=\"width:" . $width . "%\">";
+			$output .= "<li style=\"width:" . $width . "%;\">";
+            $output .= "<span>&nbsp;</span>";
+            if( $id == 1 ) {
+                $output .= '<div class="indicator date">';
+                $output .=  $daystring;
+                $output .= '</div>';
+            }
             if( $id == $percent ) {
-                $output .= "<span>&nbsp;</span>";
                 $output .= '<div class="indicator">';
                 $output .=  $current.' '.$unit;
                 $output .= '</div>';
-            } else {
-                $output .= "<span>&nbsp;</span>";
+                if( $id == 100 ) {
+                    $output .= '<div class="indicator total">';
+                    $output .=  "Goal reached!";
+                    $output .= '</div>';
+                }
+            } else if( $id == 100 ) {
+                $output .= '<div class="indicator total">';
+                $output .=  $goal.' '.$unit;
+                $output .= '</div>';
             }
 
 			$output .= "</li>";

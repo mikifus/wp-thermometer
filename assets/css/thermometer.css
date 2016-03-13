@@ -21,7 +21,7 @@
 .wp-thermometer li span {
     /* So if css is disabled there's no line break */
     display: block;
-    height: 23px;
+    height: 15px;
     border: none;
 }
 
@@ -38,15 +38,27 @@
     -moz-border-radius: 0 20px 20px 0;
 }
 .wp-thermometer li .indicator {
-    width: 100px;
-    font-size: 25px;
+    width: 120px;
+    font-size: 20px;
     position: absolute;
     left: -50px;
+}
+.wp-thermometer li .indicator.total {
+    Width: 300px;
+    top: -80px;
+    right: -10px;
+    left: inherit;
+    text-align: right;
+}
+.wp-thermometer li .indicator.date {
+    Width: 300px;
+    top: -80px;
 }
 
 .wp-thermometer .meter {
     height: 40px;
     position: relative;
+    margin-top: 60px;
     background: rgba(85, 85, 85, 0.7);
     -moz-border-radius: 25px;
     -webkit-border-radius: 25px;
@@ -57,8 +69,8 @@
 .wp-thermometer .meter > span {
     display: block;
     height: 100%;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     background-color: rgb(43,194,83);
