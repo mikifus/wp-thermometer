@@ -295,36 +295,52 @@ class Wp_Thermometer_Plugin {
 
         $goal = intval($pull_quote_atts[ 'goal' ]);
         $current = intval($pull_quote_atts[ 'current' ]);
+        $unit = $pull_quote_atts[ 'unit' ];
+        $difference = $goal - $current;
+
+        $date1 = new DateTime( $thermometer_values['deadline'] );  //current date or any date
+        $date2 = new DateTime();   //Future date
+        $diff = $date2->diff($date1)->format("%a");  //find difference
+        $days = intval($diff);   //rounding days
+
+        $percent = intval( empty($atts['percent']) ? ( $current * 100 / $goal ) : $atts['percent'] ); // TODO: Make $percent work as a parameter, I tried.
+		if ( $percent > 100) {
+            $percent = 100;
+        }
 
         $output .= '<div class="wp-thermometer">';
         $output .=  '<h3>' . wpautop( wp_kses_post( $pull_quote_atts[ 'title' ] ) ) . '</h3>';
         $output .= '<p>' . wp_kses_post( $pull_quote_atts[ 'subtitle' ] ) . '</p>';
         $output .= '<p>' . wp_kses_post( $pull_quote_atts[ 'description' ] ) . '</p>';
         $output .= '<p>' . wp_kses_post( $pull_quote_atts[ 'goal' ] ) . '</p>';
-        $output .= '<p>' . wp_kses_post( $pull_quote_atts[ 'current' ] ) . '</p>';
-        $output .= '<p>' . wp_kses_post( $pull_quote_atts[ 'unit' ] ) . '</p>';
-        $output .= '<p>' . wp_kses_post( $pull_quote_atts[ 'deadline' ] ) . '</p>';
 
+        $daystring = sprintf(
+                __("%d days to reach the goal.", 'wp_thermometer'),
+                $days
+        );
+
+        $output .= '<p> ' . $daystring . ' </p>';
+
+        $output .= '<div class="meter">';
+        $output .= '<span style="width: '.$percent.'%; "></span>';
+        $output .= '</div>';
+
+		$width = 1;
 		$output .= "<ol>";
-
-        $percent = ( $current * 100 / $goal );
-
-		$width = round( ( 1 / 100 * 100 ), 1 );
-		if ( $width * 100 > 100) {
-            $width = $width - .1;
-        }
 		for ( $c = 0; $c < 100; ++$c ) {
 
             $id = $c;
 
-			$output .= "<li style=\"width:" . $width . "%\"";
-			if ($id == $percent) {
-                $output .= " class=\"last completed\"";
-            } else if ($id < $percent) {
-                $output .= " class=\"completed\"";
+			$output .= "<li style=\"width:" . $width . "%\">";
+            if( $id == $percent ) {
+                $output .= "<span>&nbsp;</span>";
+                $output .= '<div class="indicator">';
+                $output .=  $current.' '.$unit;
+                $output .= '</div>';
+            } else {
+                $output .= "<span>&nbsp;</span>";
             }
-			$output .= "><span>&nbsp;</span>";
-			$output .= ($id == $percent) ? "<strong>" . $id . "</strong>" : ''/*$id*/;
+
 			$output .= "</li>";
 		}
 		$output .= "</ol>";

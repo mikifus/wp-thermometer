@@ -30,6 +30,7 @@ class Thermometer_List extends WP_List_Table {
 	function get_columns() {
 	  $columns = [
 	    'cb'      => '<input type="checkbox" />',
+	    'id'    => __( 'ID', 'sp' ),
 	    'title'    => __( 'Title', 'sp' ),
 	    'subtitle' => __( 'Subtitle', 'sp' ),
 	    'description'    => __( 'Description', 'sp' ),
@@ -50,10 +51,11 @@ class Thermometer_List extends WP_List_Table {
     */
     public function get_sortable_columns() {
         $sortable_columns = array(
-          'title' => array( 'title', true ),
-          'created' => array( 'created', false ),
-          'updated' => array( 'updated', false ),
-          'deadline' => array( 'deadline', false )
+          'id' => array( 'id', true ),
+          'title' => array( 'title', false ),
+          'deadline' => array( 'deadline', false ),
+          'created' => array( 'created', true ),
+          'updated' => array( 'updated', true )
         );
 
         return $sortable_columns;
@@ -167,6 +169,7 @@ class Thermometer_List extends WP_List_Table {
      */
     public function column_default( $item, $column_name ) {
       switch ( $column_name ) {
+        case 'id':
         case 'subtitle':
         case 'description':
         case 'goal':
