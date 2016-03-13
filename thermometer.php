@@ -21,5 +21,3 @@ add_action('wp_head', 'include_thermometer_css');
 // the admin panel stuff is found here
 require('thermometer_admin.php');
 require('thermometer_widget.php');
-
-?>

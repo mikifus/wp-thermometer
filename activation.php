@@ -1,30 +1,25 @@
 <?php
 function wp_thermometer_setup() {
-    $jal_db_version = '1.0';
-    
-    // Custom db table
+    $jal_db_version = '1.1';
+
     $wpdb = $GLOBALS['wpdb'];
     $charset_collate = $wpdb->get_charset_collate();
     $table_name = $wpdb->prefix . 'thermometers';
+
     if ($wpdb->get_var("SHOW TABLES LIKE '".$table_name."'") != $table_name || $jal_db_version !== get_option('jal_db_version') ) // Always check if it exists or needs update
     {
-        $sql = "CREATE TABLE IF NOT EXISTS ".$table_name."(
-            -- Primary key
-            id            BIGINT NOT NULL AUTO_INCREMENT,
-
+        $sql = "CREATE TABLE ".$table_name." (
+            id             BIGINT NOT NULL AUTO_INCREMENT,
             title          VARCHAR(200) NOT NULL,
             subtitle       VARCHAR(200),
-            description    TEXT,
-
-            goal           INTEGER     NOT NULL,
-            current        INTEGER     NOT NULL,
-
-            deadline       DATETIME    NOT NULL,
+            description    TEXT
+            goal           INTEGER      NOT NULL,
+            current        INTEGER      NOT NULL,
+            unit           VARCHAR(100),
+            deadline       DATETIME     NOT NULL,
             options        TEXT,
-
-            created        DATETIME    NOT NULL,
-            updated        DATETIME    NOT NULL,
-
+            created        DATETIME     NOT NULL,
+            updated        DATETIME     NOT NULL,
             PRIMARY KEY  (id)
         ) ".$charset_collate.';';
 
@@ -34,11 +29,11 @@ function wp_thermometer_setup() {
         add_option( 'jal_db_version', $jal_db_version );
     }
 }
-add_action( 'init', 'wp_thermometer_setup' );
+add_action( 'init', 'wp_thermometer_setup' ); // Activation
 
 function wp_thermometer_install() {
 }
-register_activation_hook( __FILE__, 'wp_thermometer_install' );
+register_activation_hook( __FILE__, 'wp_thermometer_install' ); // Install
 
 function wp_thermometer_uninstall() {
     // If uninstall is not called from WordPress, exit
