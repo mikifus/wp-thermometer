@@ -20,6 +20,7 @@ class Wp_Thermometer_Plugin {
         add_action( 'admin_print_styles', [ $this, 'include_styles' ]);
         add_action( 'admin_enqueue_scripts', [ $this, 'include_scripts' ]);
         add_action ('wp_loaded', [ $this, 'validate_forms' ]);
+        add_action( 'init', [ $this, 'register_shortcodes' ] );
 	}
     /** Singleton instance */
     public static function get_instance() {
@@ -200,12 +201,7 @@ class Wp_Thermometer_Plugin {
         );
     }
     private function form_values_thermometer( $id ) {
-        $table_name = $GLOBALS['wpdb']->prefix . "thermometers";
-        $query = $GLOBALS['wpdb']->prepare(
-                "SELECT * FROM " .$table_name. " WHERE id = %d ",
-                $id
-                );
-        $thermometer_values = $GLOBALS['wpdb']->get_row( $query, ARRAY_A );
+        $thermometer_values = $this->data_get_thermometer( $id );
 //        var_dump($thermometer_values);
 
         $title = empty($_POST['title']) ? $thermometer_values['title'] : $_POST['title'];
@@ -274,7 +270,77 @@ class Wp_Thermometer_Plugin {
         wp_redirect( admin_url( "admin.php?page=wp_thermometer" ) );
         exit;
     }
+    public function register_shortcodes() {
+        add_shortcode( 'wp_thermometer', [ $this, 'shortcode_thermometer' ] );
+    }
+    /**
+     * Shortcode that displays a thermometer.
+     * Allows to customize each field besides what comes from the database.
+     *
+     * TODO: Extract shortcode to an independent class. Avoid coupling.
+     * Is there a WP_Shortcode class?
+     *
+     * @param type $atts
+     * @return string
+     */
+    public function shortcode_thermometer( $atts ) {
+        $output = '';
+
+        if( empty($atts['thermometer_id']) ) {
+            return $output;
+        }
+
+        $thermometer_values = $this->data_get_thermometer( $atts['thermometer_id'] );
+        $pull_quote_atts = shortcode_atts( $thermometer_values, $atts );
+
+        $goal = intval($pull_quote_atts[ 'goal' ]);
+        $current = intval($pull_quote_atts[ 'current' ]);
+
+        $output .= '<div class="wp-thermometer">';
+        $output .=  '<h3>' . wpautop( wp_kses_post( $pull_quote_atts[ 'title' ] ) ) . '</h3>';
+        $output .= '<p>' . wp_kses_post( $pull_quote_atts[ 'subtitle' ] ) . '</p>';
+        $output .= '<p>' . wp_kses_post( $pull_quote_atts[ 'description' ] ) . '</p>';
+        $output .= '<p>' . wp_kses_post( $pull_quote_atts[ 'goal' ] ) . '</p>';
+        $output .= '<p>' . wp_kses_post( $pull_quote_atts[ 'current' ] ) . '</p>';
+        $output .= '<p>' . wp_kses_post( $pull_quote_atts[ 'unit' ] ) . '</p>';
+        $output .= '<p>' . wp_kses_post( $pull_quote_atts[ 'deadline' ] ) . '</p>';
+
+		$output .= "<ol>";
+
+        $percent = ( $current * 100 / $goal );
+
+		$width = round( ( 1 / 100 * 100 ), 1 );
+		if ( $width * 100 > 100) {
+            $width = $width - .1;
+        }
+		for ( $c = 0; $c < 100; ++$c ) {
+
+            $id = $c;
+
+			$output .= "<li style=\"width:" . $width . "%\"";
+			if ($id == $percent) {
+                $output .= " class=\"last completed\"";
+            } else if ($id < $percent) {
+                $output .= " class=\"completed\"";
+            }
+			$output .= "><span>&nbsp;</span>";
+			$output .= ($id == $percent) ? "<strong>" . $id . "</strong>" : ''/*$id*/;
+			$output .= "</li>";
+		}
+		$output .= "</ol>";
+
+        $output .= '</div>';
+
+        return $output;
+    }
+
+    private function data_get_thermometer( $id ) {
+        $table_name = $GLOBALS['wpdb']->prefix . "thermometers";
+        $query = $GLOBALS['wpdb']->prepare(
+                "SELECT * FROM " .$table_name. " WHERE id = %d ",
+                $id
+                );
+        $values = $GLOBALS['wpdb']->get_row( $query, ARRAY_A );
+        return $values;
+    }
 }
-add_action( 'plugins_loaded', function () {
-	Wp_Thermometer_Plugin::get_instance();
-} );

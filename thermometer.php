@@ -13,7 +13,7 @@ License: Kopyleft
 require_once('activation.php');
 
 function include_thermometer_css() {
-	echo "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"" . plugins_url() . "/wp-thermometer/thermometer.css\" />";
+	echo "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"" . plugins_url() . "/wp-thermometer/assets/css/thermometer.css\" />";
 }
 
 add_action('wp_head', 'include_thermometer_css');
@@ -21,4 +21,9 @@ add_action('wp_head', 'include_thermometer_css');
 // the admin panel stuff is found here
 require('thermometer_admin.php');
 require('thermometer_admin_table.php');
-require('thermometer_widget.php');
+//require('thermometer_widget.php');
+
+// Initialize main class
+add_action( 'plugins_loaded', function () {
+	Wp_Thermometer_Plugin::get_instance();
+} );
