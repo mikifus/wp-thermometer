@@ -311,9 +311,9 @@ class Wp_Thermometer_Plugin {
         }
 
         $output .= '<div class="wp-thermometer">';
-        $output .=  '<h3>' . wpautop( wp_kses_post( $pull_quote_atts[ 'title' ] ) ) . '</h3>';
-        $output .= '<p>' . wp_kses_post( $pull_quote_atts[ 'subtitle' ] ) . '</p>';
-        $output .= '<p>' . wp_kses_post( $pull_quote_atts[ 'description' ] ) . '</p>';
+        $output .= '<h3 class="thermometer_title">' . wpautop( wp_kses_post( $pull_quote_atts[ 'title' ] ) ) . '</h3>';
+        $output .= '<p class="thermometer_subtitle">' . wp_kses_post( $pull_quote_atts[ 'subtitle' ] ) . '</p>';
+        $output .= '<p class="thermoeter_description">' . wp_kses_post( $pull_quote_atts[ 'description' ] ) . '</p>';
 
         if( $days < 0 ) {
             $daystring = __("Finished %d days ago.", 'wp_thermometer');

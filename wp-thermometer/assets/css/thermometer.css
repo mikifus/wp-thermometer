@@ -4,6 +4,17 @@
     padding: 20px 35px 60px;
 }
 
+.wp-thermometer .thermometer_title {
+    text-align: left;
+}
+.wp-thermometer .thermometer_subtitle {
+    text-align: left;
+    font-style: italic;
+    font-size: 16px;
+}
+.wp-thermometer .thermoeter_description {
+    text-align: justify;
+}
 .wp-thermometer ol {
     width: 100%;
     margin: 0;
