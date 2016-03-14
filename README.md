@@ -18,6 +18,7 @@ You can specify the ID in the shortcode and as well override the properties save
 
 ### Thermometer properties ###
 List of the properties to be used in the shortcode:
+- id *(number, must exist in the database)*
 - title
 - subtitle
 - description
@@ -27,6 +28,7 @@ List of the properties to be used in the shortcode:
 - percent *(Will not change the 'current' value accordingly)*
 
 ## To do ##
+- Make it possible to use the shortcode without any record in the database
 - Make the Widget work. With an option box.
 - Style a bit more, specially the admin page
 - Improve form validation
@@ -34,6 +36,7 @@ List of the properties to be used in the shortcode:
 ## UPDATES ##
 #### 14/03/2016 ####
 - Plugin fork upload
+- Fixed initial bugs
 
 #### 05/02/2012 ####
 - You can now actually complete the thermometer! I guess I had kind of forgotten that.
