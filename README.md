@@ -45,4 +45,7 @@ List of the properties to be used in the shortcode:
 - http://blog.danconley.net/progress-thermometer-wordpress-plugin
 - Originally developed for Community Beer Works: http://www.communitybeerworks.com
 
+###### License #####
+*Kopyleft*
+
 
