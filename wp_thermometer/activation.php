@@ -12,7 +12,7 @@ function wp_thermometer_setup() {
             id             BIGINT NOT NULL AUTO_INCREMENT,
             title          VARCHAR(200) NOT NULL,
             subtitle       VARCHAR(200),
-            description    TEXT
+            description    TEXT,
             goal           INTEGER      NOT NULL,
             current        INTEGER      NOT NULL,
             unit           VARCHAR(100),

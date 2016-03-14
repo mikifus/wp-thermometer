@@ -83,6 +83,7 @@ class Wp_Thermometer_Plugin {
     * Plugin settings page
     */
     public function plugin_settings_page() {
+        // TODO: make templates
         ?>
         <div class="wrap">
             <h2><?php echo __("Thermometer Config", 'wp_thermometer'); ?></h2>
@@ -131,6 +132,7 @@ class Wp_Thermometer_Plugin {
     * Shows the form for adding new or editing
     */
     public function make_form_view_thermometer( $values ) {
+        // TODO: make templates
         ?>
         <div class="wrap">
             <h2><?php echo __("New thermometer", 'wp_thermometer'); ?></h2>
