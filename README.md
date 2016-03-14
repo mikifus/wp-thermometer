@@ -34,6 +34,7 @@ List of the properties to be used in the shortcode:
 ## UPDATES ##
 #### 14/03/2016 ####
 - Plugin fork upload
+
 #### 05/02/2012 ####
 - You can now actually complete the thermometer! I guess I had kind of forgotten that.
 - You can enable a gif of the dancing baby when you complete it, if you want. The code is commented out and I'd prefer if you didn't use our bandwidth for it, but it's there because I like dumb things.
