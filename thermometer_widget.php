@@ -6,6 +6,9 @@ function register_thermometer() {
 
 add_action("widgets_init","register_thermometer");
 
+/**
+ * TODO: Make it work! It won't now!
+ */
 class Progress_Thermometer extends WP_Widget {
 
 	function Progress_Thermometer() {
