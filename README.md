@@ -27,6 +27,9 @@ List of the properties to be used in the shortcode:
 - deadline *(date with format: "yyyy-mm-dd")*
 - percent *(Will not change the 'current' value accordingly)*
 
+## Translations ##
+You can translate the plugin easily with Poedit using .po files in the "/lang/" dir inside the file folder. I'll be thankful if you make new translations.
+
 ## To do ##
 - Make it possible to use the shortcode without any record in the database
 - Make the Widget work. With an option box.
