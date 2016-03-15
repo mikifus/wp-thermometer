@@ -15,12 +15,6 @@
 
 require_once('activation.php');
 
-function include_thermometer_css() {
-	echo "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"" . plugins_url() . "/wp-thermometer/assets/css/thermometer.css\" />";
-}
-
-add_action('wp_head', 'include_thermometer_css');
-
 
 // the admin panel stuff is found here
 require('thermometer_admin.php');

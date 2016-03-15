@@ -21,6 +21,10 @@ class Wp_Thermometer_Plugin {
         add_action( 'admin_enqueue_scripts', [ $this, 'include_scripts' ]);
         add_action ('wp_loaded', [ $this, 'validate_forms' ]);
         add_action( 'init', [ $this, 'register_shortcodes' ] );
+
+        // css
+        add_action('wp_head', [ $this, 'include_thermometer_css' ]);
+        add_action('admin_head', [ $this, 'my_custom_include_thermometer_admin_css' ]);
 	}
     /** Singleton instance */
     public static function get_instance() {
@@ -85,13 +89,13 @@ class Wp_Thermometer_Plugin {
     public function plugin_settings_page() {
         // TODO: make templates
         ?>
-        <div class="wrap">
+        <div class="wrap wp-thermometer">
             <h2><?php echo __("Thermometer Config", 'wp-thermometer'); ?></h2>
             <div id="poststuff">
                 <div id="post-body" class="metabox-holder columns-2">
                     <div id="post-body-content">
                         <div class="meta-box-sortables ui-sortable">
-                            <form method="post">
+                            <form id="wp-thermometer-form-table" method="post">
                                 <?php
                                 $this->table_object->prepare_items();
                                 $this->table_object->display(); ?>
@@ -134,7 +138,7 @@ class Wp_Thermometer_Plugin {
     public function make_form_view_thermometer( $values ) {
         // TODO: make templates
         ?>
-        <div class="wrap">
+        <div class="wrap wp-thermometer">
             <h2><?php echo __("New thermometer", 'wp-thermometer'); ?></h2>
             <?php
             if( !empty($this->validation_errors) ) {
@@ -144,7 +148,7 @@ class Wp_Thermometer_Plugin {
                 }
             }
             ?>
-            <form method="POST" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
+            <form class="wp-thermometer-form-new" method="POST" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
             <ul>
                 <li>
                     <label for="title"><?php echo __("Title", 'wp-thermometer'); ?><span> *</span> </label>
@@ -375,5 +379,13 @@ class Wp_Thermometer_Plugin {
                 );
         $values = $GLOBALS['wpdb']->get_row( $query, ARRAY_A );
         return $values;
+    }
+
+    public function include_thermometer_css() {
+        echo "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"" . plugins_url() . "/wp-thermometer/assets/css/thermometer.css\" />";
+    }
+
+    public function my_custom_include_thermometer_admin_css() {
+        echo "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"" . plugins_url() . "/wp-thermometer/assets/css/thermometer_admin.css\" />";
     }
 }
