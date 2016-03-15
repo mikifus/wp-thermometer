@@ -146,6 +146,7 @@ class Wp_Thermometer_Plugin {
     */
     public function make_form_view_thermometer( $values ) {
         // TODO: make templates
+        // TODO: make a preview with an ajax request and do_shortcode()
         ?>
         <div class="wrap wp-thermometer">
             <h2><?php echo __("New thermometer", 'wp-thermometer'); ?></h2>
@@ -313,10 +314,9 @@ class Wp_Thermometer_Plugin {
         $unit = $pull_quote_atts[ 'unit' ];
         $difference = $goal - $current;
 
-        $date1 = new DateTime( $thermometer_values['deadline'] );  //current date or any date
-        $date2 = new DateTime();   //Future date
-        $diff = $date2->diff($date1)->format("%a");  //find difference
-        $days = intval($diff) + 1;   //rounding days, the last one is taken too
+        $now = new DateTime("today"); // Change this to "now" in order to get full timestamp
+        $deadline_date = new DateTime( $thermometer_values['deadline'] );  //current date or any date
+        $days = intval($now->diff($deadline_date)->format("%a"));  //find difference
 
         $percent = intval( empty($atts['percent']) ? ( $current * 100 / $goal ) : $atts['percent'] ); // TODO: Make $percent work as a parameter, I tried.
 		if ( $percent > 100) {
@@ -328,8 +328,11 @@ class Wp_Thermometer_Plugin {
         $output .= '<p class="thermometer_subtitle">' . wp_kses_post( $pull_quote_atts[ 'subtitle' ] ) . '</p>';
         $output .= '<p class="thermoeter_description">' . wp_kses_post( $pull_quote_atts[ 'description' ] ) . '</p>';
 
-        if( $days < 0 ) {
-            $daystring = __("Finished %d days ago.", 'wp-thermometer');
+        if( $deadline_date < $now ) {
+            $daystring = sprintf(
+                    __("Finished %d days ago.", 'wp-thermometer'),
+                    $days
+            );
         } else if( $days == 0 ) {
             $daystring = __("Today is the last day!", 'wp-thermometer');
         } else {
