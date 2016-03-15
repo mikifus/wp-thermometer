@@ -14,8 +14,8 @@ class Thermometer_List extends WP_List_Table {
 	/** Class constructor */
 	public function __construct() {
 		parent::__construct( [
-			'singular' => __( 'Thermometer', 'wp_thermometer' ), //singular name of the listed records
-			'plural'   => __( 'Thermometers', 'wp_thermometer' ), //plural name of the listed records
+			'singular' => __( 'Thermometer', 'wp-thermometer'), //singular name of the listed records
+			'plural'   => __( 'Thermometers', 'wp-thermometer'), //plural name of the listed records
 			'ajax'     => false //should this table support ajax?
 		] );
 
@@ -30,16 +30,16 @@ class Thermometer_List extends WP_List_Table {
 	function get_columns() {
 	  $columns = [
 	    'cb'      => '<input type="checkbox" />',
-	    'id'    => __( 'ID', 'sp' ),
-	    'title'    => __( 'Title', 'sp' ),
-	    'subtitle' => __( 'Subtitle', 'sp' ),
-	    'description'    => __( 'Description', 'sp' ),
-	    'goal'    => __( 'Goal', 'sp' ),
-	    'current'    => __( 'Current', 'sp' ),
-	    'deadline'    => __( 'Deadline', 'sp' ),
-	    'options'    => __( 'Options', 'sp' ),
-	    'created'    => __( 'Created', 'sp' ),
-	    'updated'    => __( 'Updated', 'sp' )
+	    'id'    => __( 'ID', 'wp-thermometer' ),
+	    'title'    => __( 'Title', 'wp-thermometer' ),
+	    'subtitle' => __( 'Subtitle', 'wp-thermometer' ),
+	    'description'    => __( 'Description', 'wp-thermometer' ),
+	    'goal'    => __( 'Goal', 'wp-thermometer' ),
+	    'current'    => __( 'Current', 'wp-thermometer' ),
+	    'deadline'    => __( 'Deadline', 'wp-thermometer' ),
+	    'options'    => __( 'Options', 'wp-thermometer' ),
+	    'created'    => __( 'Created', 'wp-thermometer' ),
+	    'updated'    => __( 'Updated', 'wp-thermometer' )
 	  ];
 
 	  return $columns;
@@ -124,7 +124,7 @@ class Thermometer_List extends WP_List_Table {
     }
     /** Text displayed when no data is available */
     public function no_items() {
-      _e( 'No thermometers.', 'wp_thermometer' );
+      _e( 'No thermometers.', 'wp-thermometer');
     }
 	/**
 	 * Render the bulk edit checkbox

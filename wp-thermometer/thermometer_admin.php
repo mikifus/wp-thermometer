@@ -36,8 +36,8 @@ class Wp_Thermometer_Plugin {
     public function plugin_menu() {
 
         $hook = add_menu_page(
-            __("Thermometer Config", 'wp_thermometer'),
-            __("Wp Thermometer", 'wp_thermometer'),
+            __("All thermometers", 'wp-thermometer'),
+            __("All thermometers", 'wp-thermometer'),
             'manage_options',
             'wp_thermometer',
             [ $this, 'plugin_settings_page' ]
@@ -48,8 +48,8 @@ class Wp_Thermometer_Plugin {
 
         add_submenu_page(
             'wp_thermometer',
-            __("New thermometer", 'wp_thermometer'),
-            __("New thermometer", 'wp_thermometer'),
+            __("New thermometer", 'wp-thermometer'),
+            __("New thermometer", 'wp-thermometer'),
             'manage_options',
             "wp_thermometer_new",
             [ $this, 'thermometer_new' ]
@@ -86,7 +86,7 @@ class Wp_Thermometer_Plugin {
         // TODO: make templates
         ?>
         <div class="wrap">
-            <h2><?php echo __("Thermometer Config", 'wp_thermometer'); ?></h2>
+            <h2><?php echo __("Thermometer Config", 'wp-thermometer'); ?></h2>
             <div id="poststuff">
                 <div id="post-body" class="metabox-holder columns-2">
                     <div id="post-body-content">
@@ -135,7 +135,7 @@ class Wp_Thermometer_Plugin {
         // TODO: make templates
         ?>
         <div class="wrap">
-            <h2><?php echo __("New thermometer", 'wp_thermometer'); ?></h2>
+            <h2><?php echo __("New thermometer", 'wp-thermometer'); ?></h2>
             <?php
             if( !empty($this->validation_errors) ) {
                 echo "<h4>Error validating form</h4>";
@@ -147,35 +147,35 @@ class Wp_Thermometer_Plugin {
             <form method="POST" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
             <ul>
                 <li>
-                    <label for="title">Title<span> *</span>: </label>
+                    <label for="title"><?php echo __("Title", 'wp-thermometer'); ?><span> *</span> </label>
                     <input id="title" maxlength="200" size="20" name="title" value="<?php echo $values['title'] ?>" />
                 </li>
                 <li>
-                    <label for="subtitle">Subtitle: </label>
+                    <label for="subtitle"><?php echo __("Subtitle", 'wp-thermometer'); ?> </label>
                     <input id="subtitle" maxlength="200" size="20" name="subtitle" value="<?php echo $values['subtitle'] ?>" />
                 </li>
                 <li>
-                    <label for="description">Description: </label>
+                    <label for="description"><?php echo __("Description", 'wp-thermometer'); ?></label>
                     <textarea id="description" name="description"><?php echo $values['description'] ?></textarea>
                 </li>
                 <li>
-                    <label for="goal">Goal amount<span> *</span>: </label>
+                    <label for="goal"><?php echo __("Goal amount", 'wp-thermometer'); ?><span> *</span> </label>
                     <input id="goal" name="goal" value="<?php echo $values['goal'] ?>" />
                 </li>
                 <li>
-                    <label for="current">Current amount<span> *</span>: </label>
+                    <label for="current"><?php echo __("Current amount", 'wp-thermometer'); ?><span> *</span> </label>
                     <input id="current" name="current" value="<?php echo $values['current'] ?>" />
                 </li>
                 <li>
-                    <label for="unit">Unit<span> *</span>: </label>
+                    <label for="unit"><?php echo __("Unit", 'wp-thermometer'); ?><span> *</span> </label>
                     <input id="unit" name="unit" value="<?php echo $values['unit'] ?>" />
                 </li>
                 <li>
-                    <label for="deadline">Deadline: </label>
+                    <label for="deadline"><?php echo __("Deadline", 'wp-thermometer'); ?> </label>
                     <input id="deadline" name="deadline" class="jquery-datepicker" value="<?php echo $values['deadline'] ?>" />
                 </li>
                 <li>
-                    <?php submit_button( 'Submit' ); ?>
+                    <?php submit_button( __("Submit", 'wp-thermometer') ); ?>
                 </li>
             </ul>
             </form>
@@ -316,12 +316,12 @@ class Wp_Thermometer_Plugin {
         $output .= '<p class="thermoeter_description">' . wp_kses_post( $pull_quote_atts[ 'description' ] ) . '</p>';
 
         if( $days < 0 ) {
-            $daystring = __("Finished %d days ago.", 'wp_thermometer');
+            $daystring = __("Finished %d days ago.", 'wp-thermometer');
         } else if( $days == 0 ) {
-            $daystring = __("Today is the last day!", 'wp_thermometer');
+            $daystring = __("Today is the last day!", 'wp-thermometer');
         } else {
             $daystring = sprintf(
-                    __("%d days to reach the goal.", 'wp_thermometer'),
+                    __("%d days to reach the goal.", 'wp-thermometer'),
                     $days
             );
         }
@@ -349,7 +349,7 @@ class Wp_Thermometer_Plugin {
                 $output .= '</div>';
                 if( $id == 100 ) {
                     $output .= '<div class="indicator total">';
-                    $output .=  "Goal reached!";
+                    $output .=  __("Goal reached!", 'wp-thermometer');
                     $output .= '</div>';
                 }
             } else if( $id == 100 ) {
