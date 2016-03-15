@@ -1,0 +1,21 @@
+/*
+    Created on : 15-mar-2016, 22:42:57
+    Author     : mikifus
+*/
+.wp-thermometer {
+
+}
+.wp-thermometer-form-new {
+    /*text-align: center;*/
+}
+.wp-thermometer-form-new label {
+    width: 200px;
+    display: block;
+}
+.wp-thermometer-form-new input, .wp-thermometer-form-new textarea {
+    width: 300px;
+    display: block;
+}
+.wp-thermometer-form-new textarea {
+    height: 120px;
+}
