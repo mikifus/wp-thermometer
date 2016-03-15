@@ -4,7 +4,7 @@ https://github.com/Sigafoos/Progress-Thermometer-Wordpress-plugin
 
 Version 1.0
 
-# Usage #
+## Usage ##
 Once installed and activated you can go to the plugin config in the admin dashboard menu. There you see a table that will display all the created thermometers. Click New Thermometer to add a define a new thermometer.
 
 Once save it you can display the thermometer by using the shortcode:
