@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wp-thermometer\n"
-"POT-Creation-Date: 2016-03-15 22:33+0100\n"
+"POT-Creation-Date: 2016-03-15 23:38+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Ecoar)))\n"
@@ -16,65 +16,73 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: thermometer_admin.php:39 thermometer_admin.php:40
+#: thermometer_admin.php:43 thermometer_admin.php:44
+msgid "Wp Thermometer"
+msgstr "Wp Thermometer"
+
+#: thermometer_admin.php:54 thermometer_admin.php:55
 msgid "All thermometers"
 msgstr "Termómetros"
 
-#: thermometer_admin.php:51 thermometer_admin.php:52 thermometer_admin.php:138
+#: thermometer_admin.php:64 thermometer_admin.php:65 thermometer_admin.php:151
 msgid "New thermometer"
 msgstr "Nuevo termómetro"
 
-#: thermometer_admin.php:89
+#: thermometer_admin.php:103
 msgid "Thermometer Config"
 msgstr "Configuración termómetros"
 
-#: thermometer_admin.php:150 thermometer_admin_table.php:34
+#: thermometer_admin.php:105
+msgid "Add new thermometer"
+msgstr "Añadir nuevo termómetro"
+
+#: thermometer_admin.php:163 thermometer_admin_table.php:34
 msgid "Title"
 msgstr "Título"
 
-#: thermometer_admin.php:154 thermometer_admin_table.php:35
+#: thermometer_admin.php:167 thermometer_admin_table.php:35
 msgid "Subtitle"
 msgstr "Subtítulo"
 
-#: thermometer_admin.php:158 thermometer_admin_table.php:36
+#: thermometer_admin.php:171 thermometer_admin_table.php:36
 msgid "Description"
 msgstr "Descripción"
 
-#: thermometer_admin.php:162
+#: thermometer_admin.php:175
 msgid "Goal amount"
 msgstr "Cantidad objetivo"
 
-#: thermometer_admin.php:166
+#: thermometer_admin.php:179
 msgid "Current amount"
 msgstr "Cantidad actual"
 
-#: thermometer_admin.php:170
+#: thermometer_admin.php:183
 msgid "Unit"
 msgstr "Unidad"
 
-#: thermometer_admin.php:174 thermometer_admin_table.php:39
+#: thermometer_admin.php:187 thermometer_admin_table.php:39
 msgid "Deadline"
 msgstr "Fecha límite"
 
-#: thermometer_admin.php:178
+#: thermometer_admin.php:191
 msgid "Submit"
 msgstr "Guardar"
 
-#: thermometer_admin.php:319
+#: thermometer_admin.php:332
 #, php-format
 msgid "Finished %d days ago."
 msgstr "Finalizado hace %d días."
 
-#: thermometer_admin.php:321
+#: thermometer_admin.php:334
 msgid "Today is the last day!"
 msgstr "¡Hoy es el último día!"
 
-#: thermometer_admin.php:324
+#: thermometer_admin.php:337
 #, php-format
 msgid "%d days to reach the goal."
 msgstr "%d días para alcanzar el objetivo"
 
-#: thermometer_admin.php:352
+#: thermometer_admin.php:365
 msgid "Goal reached!"
 msgstr "¡Objetivo alcanzado!"
 
@@ -113,6 +121,3 @@ msgstr "Actualizado"
 #: thermometer_admin_table.php:127
 msgid "No thermometers."
 msgstr "No hay termómetros."
-
-#~ msgid "Wp Thermometer"
-#~ msgstr "Wp Thermometer"
