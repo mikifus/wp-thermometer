@@ -5,6 +5,8 @@
 .wp-thermometer {
 
 }
+
+// New
 .wp-thermometer-form-new {
     /*text-align: center;*/
 }
@@ -18,4 +20,8 @@
 }
 .wp-thermometer-form-new textarea {
     height: 120px;
+}
+// Table
+.wp-thermometer .table-container {
+    width: 100%;
 }

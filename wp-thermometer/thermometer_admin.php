@@ -40,17 +40,26 @@ class Wp_Thermometer_Plugin {
     public function plugin_menu() {
 
         $hook = add_menu_page(
-            __("All thermometers", 'wp-thermometer'),
-            __("All thermometers", 'wp-thermometer'),
+            __("Wp Thermometer", 'wp-thermometer'),
+            __("Wp Thermometer", 'wp-thermometer'),
             'manage_options',
             'wp_thermometer',
             [ $this, 'plugin_settings_page' ]
         );
-
-
         add_action( "load-".$hook, [ $this, 'screen_option' ] );
 
-        add_submenu_page(
+
+        $hook = add_submenu_page(
+            'wp_thermometer',
+            __("All thermometers", 'wp-thermometer'),
+            __("All thermometers", 'wp-thermometer'),
+            'manage_options',
+            "wp_thermometer",
+            [ $this, 'plugin_settings_page' ]
+        );
+        add_action( "load-".$hook, [ $this, 'screen_option' ] );
+
+        $hook = add_submenu_page(
             'wp_thermometer',
             __("New thermometer", 'wp-thermometer'),
             __("New thermometer", 'wp-thermometer'),
@@ -58,6 +67,7 @@ class Wp_Thermometer_Plugin {
             "wp_thermometer_new",
             [ $this, 'thermometer_new' ]
         );
+        add_action( "load-".$hook, [ $this, 'screen_option' ] );
 
     }
     /**
@@ -91,17 +101,16 @@ class Wp_Thermometer_Plugin {
         ?>
         <div class="wrap wp-thermometer">
             <h2><?php echo __("Thermometer Config", 'wp-thermometer'); ?></h2>
-            <div id="poststuff">
-                <div id="post-body" class="metabox-holder columns-2">
-                    <div id="post-body-content">
+            <div>
+                <a class="button-primary" href=""><?php echo __("Add new thermometer", 'wp-thermometer'); ?></a>
+                <div id="table-container" class="metabox-holder columns-2">
                         <div class="meta-box-sortables ui-sortable">
-                            <form id="wp-thermometer-form-table" method="post">
+                            <form class="wp-thermometer-form-table" method="post">
                                 <?php
                                 $this->table_object->prepare_items();
                                 $this->table_object->display(); ?>
                             </form>
                         </div>
-                    </div>
                 </div>
                 <br class="clear">
             </div>
