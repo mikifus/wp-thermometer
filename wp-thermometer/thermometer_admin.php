@@ -323,11 +323,6 @@ class Wp_Thermometer_Plugin {
             $percent = 100;
         }
 
-        $output .= '<div class="wp-thermometer">';
-        $output .= '<h3 class="thermometer_title">' . wpautop( wp_kses_post( $pull_quote_atts[ 'title' ] ) ) . '</h3>';
-        $output .= '<p class="thermometer_subtitle">' . wp_kses_post( $pull_quote_atts[ 'subtitle' ] ) . '</p>';
-        $output .= '<p class="thermoeter_description">' . wp_kses_post( $pull_quote_atts[ 'description' ] ) . '</p>';
-
         if( $deadline_date < $now ) {
             $daystring = sprintf(
                     __("Finished %d days ago.", 'wp-thermometer'),
@@ -342,6 +337,14 @@ class Wp_Thermometer_Plugin {
             );
         }
 
+        $goalstring = sprintf(__("Goal: %d %s", 'wp-thermometer'), $goal, $unit);
+
+        $output .= '<div class="wp-thermometer">';
+        $output .= '<h3 class="thermometer_title">' . wpautop( wp_kses_post( $pull_quote_atts[ 'title' ] ) ) . '</h3>';
+        $output .= '<p class="thermometer_subtitle">' . wp_kses_post( $pull_quote_atts[ 'subtitle' ] ) . '</p>';
+        $output .= '<p class="thermometer_deadline">' . wp_kses_post( $daystring ) . '</p>';
+        $output .= '<p class="thermoeter_description">' . wp_kses_post( $pull_quote_atts[ 'description' ] ) . '</p>';
+
         $output .= '<div class="meter">';
         $output .= '<span style="width: '.$percent.'%; "></span>';
         $output .= '</div>';
@@ -355,8 +358,8 @@ class Wp_Thermometer_Plugin {
 			$output .= "<li style=\"width:" . $width . "%;\">";
             $output .= "<span>&nbsp;</span>";
             if( $id == 1 ) {
-                $output .= '<div class="indicator date">';
-                $output .=  $daystring;
+                $output .= '<div class="indicator total">';
+                $output .=  $goalstring;
                 $output .= '</div>';
             }
             if( $id == $percent ) {
@@ -364,14 +367,10 @@ class Wp_Thermometer_Plugin {
                 $output .=  $current.' '.$unit;
                 $output .= '</div>';
                 if( $id == 100 ) {
-                    $output .= '<div class="indicator total">';
+                    $output .= '<div class="indicator completed">';
                     $output .=  __("Goal reached!", 'wp-thermometer');
                     $output .= '</div>';
                 }
-            } else if( $id == 100 ) {
-                $output .= '<div class="indicator total">';
-                $output .=  $goal.' '.$unit;
-                $output .= '</div>';
             }
 
 			$output .= "</li>";
