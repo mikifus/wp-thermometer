@@ -314,6 +314,15 @@ class Wp_Thermometer_Plugin {
         $unit = $pull_quote_atts[ 'unit' ];
         $difference = $goal - $current;
 
+        if( !empty($atts[ 'class' ]) )
+        {
+            $class_name = strip_tags($atts[ 'class' ]);
+        }
+        else
+        {
+            $class_name = '';
+        }
+
         $now = new DateTime("today"); // Change this to "now" in order to get full timestamp
         $deadline_date = new DateTime( $thermometer_values['deadline'] );  //current date or any date
         $days = intval($now->diff($deadline_date)->format("%a"));  //find difference
@@ -339,7 +348,7 @@ class Wp_Thermometer_Plugin {
 
         $goalstring = sprintf(__("Goal: %d %s", 'wp-thermometer'), $goal, $unit);
 
-        $output .= '<div class="wp-thermometer">';
+        $output .= '<div class="wp-thermometer '.$class_name.'">';
         $output .= '<h3 class="thermometer_title">' . wpautop( wp_kses_post( $pull_quote_atts[ 'title' ] ) ) . '</h3>';
         $output .= '<p class="thermometer_subtitle">' . wp_kses_post( $pull_quote_atts[ 'subtitle' ] ) . '</p>';
         $output .= '<p class="thermometer_deadline">' . wp_kses_post( $daystring ) . '</p>';
