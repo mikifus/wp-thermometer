@@ -15,30 +15,79 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: thermometer_admin.php:39 thermometer_admin.php:40
+#: thermometer_admin.php:43 thermometer_admin.php:44
+msgid "Wp Thermometer"
+msgstr ""
+
+#: thermometer_admin.php:54 thermometer_admin.php:55
 msgid "All thermometers"
 msgstr ""
 
-#: thermometer_admin.php:51 thermometer_admin.php:52 thermometer_admin.php:138
+#: thermometer_admin.php:64 thermometer_admin.php:65 thermometer_admin.php:152
 msgid "New thermometer"
 msgstr ""
 
-#: thermometer_admin.php:89
+#: thermometer_admin.php:103
 msgid "Thermometer Config"
 msgstr ""
 
-#: thermometer_admin.php:319
+#: thermometer_admin.php:105
+msgid "Add new thermometer"
+msgstr ""
+
+#: thermometer_admin.php:164 thermometer_admin_table.php:34
+msgid "Title"
+msgstr ""
+
+#: thermometer_admin.php:168 thermometer_admin_table.php:35
+msgid "Subtitle"
+msgstr ""
+
+#: thermometer_admin.php:172 thermometer_admin_table.php:36
+msgid "Description"
+msgstr ""
+
+#: thermometer_admin.php:176
+msgid "Goal amount"
+msgstr ""
+
+#: thermometer_admin.php:180
+msgid "Current amount"
+msgstr ""
+
+#: thermometer_admin.php:184
+msgid "Unit"
+msgstr ""
+
+#: thermometer_admin.php:188 thermometer_admin_table.php:39
+msgid "Deadline"
+msgstr ""
+
+#: thermometer_admin.php:192
+msgid "Submit"
+msgstr ""
+
+#: thermometer_admin.php:337
 #, php-format
 msgid "Finished %d days ago."
 msgstr ""
 
-#: thermometer_admin.php:321
+#: thermometer_admin.php:341
 msgid "Today is the last day!"
 msgstr ""
 
-#: thermometer_admin.php:324
+#: thermometer_admin.php:344
 #, php-format
 msgid "%d days to reach the goal."
+msgstr ""
+
+#: thermometer_admin.php:349
+#, php-format
+msgid "Goal: %d %s"
+msgstr ""
+
+#: thermometer_admin.php:380
+msgid "Goal reached!"
 msgstr ""
 
 #: thermometer_admin_table.php:17
@@ -53,28 +102,12 @@ msgstr ""
 msgid "ID"
 msgstr ""
 
-#: thermometer_admin_table.php:34
-msgid "Title"
-msgstr ""
-
-#: thermometer_admin_table.php:35
-msgid "Subtitle"
-msgstr ""
-
-#: thermometer_admin_table.php:36
-msgid "Description"
-msgstr ""
-
 #: thermometer_admin_table.php:37
 msgid "Goal"
 msgstr ""
 
 #: thermometer_admin_table.php:38
 msgid "Current"
-msgstr ""
-
-#: thermometer_admin_table.php:39
-msgid "Deadline"
 msgstr ""
 
 #: thermometer_admin_table.php:40

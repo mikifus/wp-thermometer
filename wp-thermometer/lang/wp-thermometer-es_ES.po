@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wp-thermometer\n"
-"POT-Creation-Date: 2016-03-15 23:38+0100\n"
+"POT-Creation-Date: 2016-04-04 23:35+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Ecoar)))\n"
@@ -24,7 +24,7 @@ msgstr "Wp Thermometer"
 msgid "All thermometers"
 msgstr "Termómetros"
 
-#: thermometer_admin.php:64 thermometer_admin.php:65 thermometer_admin.php:151
+#: thermometer_admin.php:64 thermometer_admin.php:65 thermometer_admin.php:152
 msgid "New thermometer"
 msgstr "Nuevo termómetro"
 
@@ -36,53 +36,58 @@ msgstr "Configuración termómetros"
 msgid "Add new thermometer"
 msgstr "Añadir nuevo termómetro"
 
-#: thermometer_admin.php:163 thermometer_admin_table.php:34
+#: thermometer_admin.php:164 thermometer_admin_table.php:34
 msgid "Title"
 msgstr "Título"
 
-#: thermometer_admin.php:167 thermometer_admin_table.php:35
+#: thermometer_admin.php:168 thermometer_admin_table.php:35
 msgid "Subtitle"
 msgstr "Subtítulo"
 
-#: thermometer_admin.php:171 thermometer_admin_table.php:36
+#: thermometer_admin.php:172 thermometer_admin_table.php:36
 msgid "Description"
 msgstr "Descripción"
 
-#: thermometer_admin.php:175
+#: thermometer_admin.php:176
 msgid "Goal amount"
 msgstr "Cantidad objetivo"
 
-#: thermometer_admin.php:179
+#: thermometer_admin.php:180
 msgid "Current amount"
 msgstr "Cantidad actual"
 
-#: thermometer_admin.php:183
+#: thermometer_admin.php:184
 msgid "Unit"
 msgstr "Unidad"
 
-#: thermometer_admin.php:187 thermometer_admin_table.php:39
+#: thermometer_admin.php:188 thermometer_admin_table.php:39
 msgid "Deadline"
 msgstr "Fecha límite"
 
-#: thermometer_admin.php:191
+#: thermometer_admin.php:192
 msgid "Submit"
 msgstr "Guardar"
 
-#: thermometer_admin.php:332
+#: thermometer_admin.php:337
 #, php-format
 msgid "Finished %d days ago."
 msgstr "Acabó hace %d días."
 
-#: thermometer_admin.php:334
+#: thermometer_admin.php:341
 msgid "Today is the last day!"
 msgstr "¡Hoy es el último día!"
 
-#: thermometer_admin.php:337
+#: thermometer_admin.php:344
 #, php-format
 msgid "%d days to reach the goal."
 msgstr "%d días para alcanzar el objetivo"
 
-#: thermometer_admin.php:365
+#: thermometer_admin.php:349
+#, php-format
+msgid "Goal: %d %s"
+msgstr "Objetivo: %d %s"
+
+#: thermometer_admin.php:380
 msgid "Goal reached!"
 msgstr "¡Objetivo alcanzado!"
 
