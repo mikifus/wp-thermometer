@@ -2,7 +2,7 @@
 I was looking for a plugin that would allow me to make a crowdfunding-like progress bar counter. Found nothing useful and decided to do my own. The original source of this plugin gave me the idea on how to start:
 https://github.com/Sigafoos/Progress-Thermometer-Wordpress-plugin
 
-Version 1.01
+Version 1.02
 
 ## Usage ##
 Once installed and activated you can go to the plugin config in the admin dashboard menu. There you see a table that will display all the created thermometers. Click New Thermometer to add a define a new thermometer.
@@ -26,6 +26,7 @@ List of the properties to be used in the shortcode:
 - current *(number)*
 - deadline *(date with format: "yyyy-mm-dd")*
 - percent *(Will not change the 'current' value accordingly)*
+- class
 
 ## Translations ##
 You can translate the plugin easily with Poedit using .po files in the "/lang/" dir inside the file folder. I'll be thankful if you make new translations.
@@ -37,6 +38,11 @@ You can translate the plugin easily with Poedit using .po files in the "/lang/" 
 - Improve form validation
 
 ## UPDATES ##
+#### 05/04/2016 ####
+- Added galician translation
+- Added the option to add a class to the thermometer container
+- Added "mutation" theme that can be set by adding class="mutation" to the shortcode
+
 #### 16/03/2016 ####
 - Plugin can now be translated
 - Added Spanish translation
